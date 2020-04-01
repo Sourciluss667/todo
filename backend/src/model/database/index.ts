@@ -17,6 +17,11 @@ public async getAllTodo() {
   return result;
 }
 
+public async deleteTodo(id: number) {
+  const result = await this.pool.query("DELETE FROM todo WHERE id = $1", [id]);
+  return result;
+}
+
 public async addTodo(str: string) {
   try {
     await this.pool.query({

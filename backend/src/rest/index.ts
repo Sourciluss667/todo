@@ -29,3 +29,18 @@ export let addTodo = async (req: Request, res: Response) => {
     res.sendStatus(400);
   }
 };
+
+/**
+ * Delete /deleteTodo
+ * Delete Todo with id
+ */
+export let deleteTodo = async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await bdd.deleteTodo(id);
+  if (result) {
+    res.sendStatus(200);
+    console.log("Delete todo with id: " + id);
+  } else {
+    res.sendStatus(400);
+  }
+};

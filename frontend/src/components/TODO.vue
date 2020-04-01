@@ -17,6 +17,15 @@ export default {
     deleteTodo (index) {
       if (index < this.list.length) {
         this.list.splice(index, 1)
+        fetch('http://localhost:3000/deleteTodo/' + index, {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: new Headers()
+        })
+        .then(res => {
+          // Reussit
+          console.log('Delete', res)
+        })
       }
     }
   }
